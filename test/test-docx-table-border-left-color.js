@@ -1,6 +1,6 @@
 /*
 
-	test-docx-border-left-color.js
+	test-docx-table-border-left-color.js
 
 	Example of usage of colored left border
 

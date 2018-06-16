@@ -1,8 +1,8 @@
 /*
 
-	test-docx-table-border-left-color.js
+	test-docx-table-border.js
 
-	Example of usage of colored left border
+	Example of usage of table border
 
 	Author:		Ilia Ashmarin, mail[at]harduino.com
 
@@ -46,67 +46,86 @@ describe("DOCX generator", function () {
 		var docx = officegen ( 'docx' );
 		docx.on ( 'error', onError );
 
-		/*var table = [
-			[{
-				val: "No.",
-				opts: {
-					cellColWidth: 4261,
-					b:true,
-					sz: '48',
-					shd: {
-						fill: "7F7F7F",
-						themeFill: "text1",
-						"themeFillTint": "80"
-					},
-					fontFamily: "Avenir Book"
-				}
-			},{
-				val: "Title1",
-				opts: {
-					b:true,
-					color: "A00000",
-					align: "right",
-					shd: {
-						fill: "92CDDC",
-						themeFill: "text1",
-						"themeFillTint": "80"
-					}
-				}
-			},{
-				val: "Title2",
-				opts: {
-					align: "center",
-					vAlign: "center",
-					cellColWidth: 42,
-					b:true,
-					sz: '48',
-					shd: {
-						fill: "92CDDC",
-						themeFill: "text1",
-						"themeFillTint": "80"
-					}
-				}
-			}],
-			[1,'All grown-ups were once children',''],
-			[2,'there is no harm in putting off a piece of work until another day.',''],
-			[3,'But when it is a matter of baobabs, that always means a catastrophe.',''],
-			[4,'watch out for the baobabs!','END'],
-		]*/
-
+		var opts_header = {
+			b:true, /* bold enabled */
+			color: "FFFFFF", /* text color */
+			align: "center", /* text align */
+			shd: {
+				fill: "98BE4D" /* background's fill color */
+			}
+		};
 		var table = [
 			[
 				{
-					val: "Header1"
+					val:	"Section/Question",
+					opts:	opts_header
 				},
 				{
-					val: "Header2"
+					val:	"Privacy Index",
+					opts:	opts_header
 				},
 				{
-					val: "Header3"
+					val:	"Risk",
+					opts:	opts_header
+				},
+				{
+					val:	"Risk Level",
+					opts:	opts_header
+				},
+				{
+					val:	"Remediation",
+					opts:	opts_header
+				},
+				{
+					val:	"No.",
+					opts:	opts_header
+				}
+			],
+			[
+				{
+					val: "S1/Q3"
+				},
+				{
+					val: "w01"
+				},
+				{
+					val: "abc"
+				},
+				{
+					val: "medium"
+				},
+				{
+					val: "Please contact your DPO"
+				},
+				{
+					val: "1"
+				}
+			],
+			[
+				{
+					val: "3-1"
+				},
+				{
+					val: "3-2",
+					opts: {
+						align:	'center',
+						vAlign: 'center'
+					}
+				},
+				{
+					val: "3-3"
+				},
+				{
+					val: "3-4"
+				},
+				{
+					val: "3-5"
+				},
+				{
+					val: "3-6"
 				}
 			]
 		];
-
 		var tableStyle = {
 			tableColWidth: 4261,
 			tableSize: 24,
@@ -115,13 +134,12 @@ describe("DOCX generator", function () {
 			borders: true, // enable borders in table
 			borderColor: "98BE4D", // color for border
 			borderSize: "12", // size of border width
-			bordersInsideH:false, //do not remove horizontal borders from inside table
-			bordersInsideV:true, //remove vertically borders from inside table
+			bordersInsideH:true, //do not remove horizontal borders from inside table
+			bordersInsideV:true, //do not remove vertically borders from inside table
 		}
-
 		docx.createTable (table, tableStyle);
 
-		var FILENAME = "test-docx-table-border-left-color.docx";
+		var FILENAME = "test-docx-table-border.docx";
 		var out = fs.createWriteStream(OUTDIR + FILENAME);
 		docx.generate(out);
 		out.on ( 'close', function () {

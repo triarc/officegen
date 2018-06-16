@@ -967,10 +967,13 @@ var table =[
 var tableStyle = {
   tableColWidth: 4261,
   tableSize: 24,
-  tableColor: "ada",
+  tableColor: "444444",
   tableAlign: "left",
-  tableFontFamily: "Comic Sans MS",
-  borders: true
+  borders: true, // enable borders in table
+  borderColor: "444444", // color for border
+  borderSize: "12", // size of border width
+  bordersInsideH:false, //do not remove horizontal borders from inside table
+  bordersInsideV:true, //remove vertically borders from inside table
 }
 
 docx.createTable (table, tableStyle);

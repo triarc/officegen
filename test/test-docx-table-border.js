@@ -113,16 +113,58 @@ describe("DOCX generator", function () {
 					}
 				},
 				{
-					val: "3-3"
+					val: "3-3",
+					opts: {
+						borders: {
+							right: {
+								val: null
+							},
+							left: {
+								size: 36,
+								color: 'FF0000'
+							},
+							bottom: {
+								size: 36,
+								color: '0000FF'
+							}
+						}
+					}
 				},
 				{
-					val: "3-4"
+					val: "3-4",
+					opts: {
+						borders: {
+							all: {
+								val: null
+							}
+						}
+					}
 				},
 				{
-					val: "3-5"
+					val: "3-5",
+					opts: {
+						borders: {
+							all: {
+								size: 20,
+								color:	'00FF00'
+							}
+						}
+					}
 				},
 				{
-					val: "3-6"
+					val: "3-6",
+					opts: {
+						borders: {
+							right: {
+								size:	30,
+								val:	'dotted'
+							},
+							bottom: {
+								size:	30,
+								val:	'dotted'
+							}
+						}
+					}
 				}
 			]
 		];

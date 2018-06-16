@@ -46,52 +46,66 @@ describe("DOCX generator", function () {
 		var docx = officegen ( 'docx' );
 		docx.on ( 'error', onError );
 
+		/*var table = [
+			[{
+				val: "No.",
+				opts: {
+					cellColWidth: 4261,
+					b:true,
+					sz: '48',
+					shd: {
+						fill: "7F7F7F",
+						themeFill: "text1",
+						"themeFillTint": "80"
+					},
+					fontFamily: "Avenir Book"
+				}
+			},{
+				val: "Title1",
+				opts: {
+					b:true,
+					color: "A00000",
+					align: "right",
+					shd: {
+						fill: "92CDDC",
+						themeFill: "text1",
+						"themeFillTint": "80"
+					}
+				}
+			},{
+				val: "Title2",
+				opts: {
+					align: "center",
+					vAlign: "center",
+					cellColWidth: 42,
+					b:true,
+					sz: '48',
+					shd: {
+						fill: "92CDDC",
+						themeFill: "text1",
+						"themeFillTint": "80"
+					}
+				}
+			}],
+			[1,'All grown-ups were once children',''],
+			[2,'there is no harm in putting off a piece of work until another day.',''],
+			[3,'But when it is a matter of baobabs, that always means a catastrophe.',''],
+			[4,'watch out for the baobabs!','END'],
+		]*/
+
 		var table = [
-		  [{
-		    val: "No.",
-		    opts: {
-		      cellColWidth: 4261,
-		      b:true,
-		      sz: '48',
-		      shd: {
-		        fill: "7F7F7F",
-		        themeFill: "text1",
-		        "themeFillTint": "80"
-		      },
-		      fontFamily: "Avenir Book"
-		    }
-		  },{
-		    val: "Title1",
-		    opts: {
-		      b:true,
-		      color: "A00000",
-		      align: "right",
-		      shd: {
-		        fill: "92CDDC",
-		        themeFill: "text1",
-		        "themeFillTint": "80"
-		      }
-		    }
-		  },{
-		    val: "Title2",
-		    opts: {
-		      align: "center",
-		      vAlign: "center",
-		      cellColWidth: 42,
-		      b:true,
-		      sz: '48',
-		      shd: {
-		        fill: "92CDDC",
-		        themeFill: "text1",
-		        "themeFillTint": "80"
-		      }
-		    }
-		  }],
-		  [1,'All grown-ups were once children',''],
-		  [2,'there is no harm in putting off a piece of work until another day.',''],
-		  [3,'But when it is a matter of baobabs, that always means a catastrophe.',''],
-		  [4,'watch out for the baobabs!','END'],
-		]
+			[
+				{
+					val: "Header1"
+				},
+				{
+					val: "Header2"
+				},
+				{
+					val: "Header3"
+				}
+			]
+		];
 
 		var tableStyle = {
 			tableColWidth: 4261,
@@ -99,7 +113,7 @@ describe("DOCX generator", function () {
 			tableColor: "444444",
 			tableAlign: "left",
 			borders: true, // enable borders in table
-			borderColor: "444444", // color for border
+			borderColor: "98BE4D", // color for border
 			borderSize: "12", // size of border width
 			bordersInsideH:false, //do not remove horizontal borders from inside table
 			bordersInsideV:true, //remove vertically borders from inside table
@@ -107,7 +121,7 @@ describe("DOCX generator", function () {
 
 		docx.createTable (table, tableStyle);
 
-		var FILENAME = "test-docx-border-top.docx";
+		var FILENAME = "test-docx-table-border-left-color.docx";
 		var out = fs.createWriteStream(OUTDIR + FILENAME);
 		docx.generate(out);
 		out.on ( 'close', function () {
